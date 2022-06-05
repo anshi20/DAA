@@ -36,7 +36,7 @@ int main()
         }
     }
     cout<<"Maximum no. of activities that can be selected : "<<ans;
-    cout<<"\nSelected acticities are : ";
+    cout<<"\nSelected activities are : ";
     for(i=0;i<ac.size();i++)
     {
         cout<<ac[i]<<", ";
