@@ -1,52 +1,44 @@
-#include <bits/stdc++.h>
-using namespace std; 
 
-#define N 10	
+#include<bits/stdc++.h>
+using namespace std;
 
-struct Activity 
-{ 
-    int start, finish; 
-}; 
+bool compare(vector<int> a, vector<int> b)
+{
+    return a[1]<b[1];
+}
 
-
-bool Sort_activity(Activity s1, Activity s2) 
-{ 
-    return (s1.finish< s2.finish); 
-} 
-
-
-void print_Max_Activities(Activity arr[], int n) 
-{ 
-    
-	sort(arr, arr+n, Sort_activity); 
-
-	cout<< "Following activities are selected \n"; 
-
-    int i = 0; 
-	cout<< "(" <<arr[i].start<< ", " <<arr[i].finish << ")\n"; 
-
-    
-    for (int j = 1; j < n; j++) 
-    { 
-    
-      	if (arr[j].start>= arr[i].finish) 
-      	{	 
-			cout<< "(" <<arr[j].start<< ", "<<arr[j].finish << ") \n"; 
-			i = j; 
-      	} 
-    } 
-} 
-
-
-int main() 
-{ 
-    Activity arr[N];
-	for(int i=0; i<=N-1; i++)
-	{
-		cout<<"Enter the start and end time of "<<i+1<<" activity \n";
-		cin>>arr[i].start>>arr[i].finish;
+int main()
+{
+    int n;
+    cout<<"Enter no. of activities : ";
+    cin>>n;
+    int i;
+    vector<int> ac;
+    vector<vector<int>> v;
+    cout<<"START\tEND\n";
+    for(i=0;i<n;i++)
+    {
+        int start, end;
+        cin>>start>>end;
+        v.push_back({start,end});
     }
-
-	print_Max_Activities(arr, N); 
-    return 0; 
+    sort(v.begin(), v.end(), compare);
+    int ans=1;
+    int end = v[0][1];
+    ac.push_back(0);
+    for(i=1;i<n;i++)
+    {
+        if(v[i][0]>=end)
+        {
+            ans++;
+            ac.push_back(i);
+            end=v[i][1];
+        }
+    }
+    cout<<"Maximum no. of activities that can be selected : "<<ans;
+    cout<<"\nSelected acticities are : ";
+    for(i=0;i<ac.size();i++)
+    {
+        cout<<ac[i]<<", ";
+    }
 }
