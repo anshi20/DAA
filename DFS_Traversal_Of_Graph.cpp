@@ -6,7 +6,7 @@ using namespace std;
 #define vi vector<int>
 const int N = 1e5 + 2;
 bool visited[N];
-vi adj[N];
+vector<vi> adj(N);
 void dfs(int node)
 {
     visited[node]=true;
