@@ -66,7 +66,7 @@ int main()
             cycle=true;
         }
         else
-            union_set(x,y);
+            union_set(u,v);
     }
     if(cycle)
        cout<<"Cycle is present !";
